@@ -24,7 +24,14 @@ function initializeToolkit() {
 async function main() {
   const server = initializeToolkit();
   const transport = new StdioServerTransport();
+  
+  // Set up error handler for transport errors
+  transport.onerror = (error: Error) => {
+    console.error(colors.red('Transport error:'), error);
+  };
+  
   await server.connect(transport);
+  console.log(colors.green("Connected!"));
 }
 
 main().catch((error: unknown) => {

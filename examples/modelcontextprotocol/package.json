@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
-    "@modelcontextprotocol/sdk": "^1.7.0",    
-    "@paybyrd/agent-toolkit": "^1.0.0"
+    "@modelcontextprotocol/sdk": "^1.7.0"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
