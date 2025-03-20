@@ -2,7 +2,7 @@ parameters:
   - name: pool
     displayName: 'Pool'
     type: string
-    default: 'Self-hosted'
+    default: 'Azure Pipelines'
     values:
       - 'Azure Pipelines'
       - 'Self-hosted'
