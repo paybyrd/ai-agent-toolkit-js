@@ -22,20 +22,12 @@ function initializeToolkit() {
 }
 
 async function main() {
-  
-  try {
-    const toolkit = initializeToolkit();
-    const transport = new StdioServerTransport();
-
-    await toolkit.connect(transport);
-
-    console.log(colors.green("Connected!"));
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  const server = initializeToolkit();
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
 }
 
 main().catch((error: unknown) => {
+  console.error('Server error:', error);
   process.exit(1);
 });
