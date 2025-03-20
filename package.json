@@ -1,8 +1,7 @@
 {
   "name": "@paybyrd/agent-toolkit",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type":"module",
-  "homepage": "https://github.com/paybyrd/agent-toolkit",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist",
@@ -31,8 +30,19 @@
   "engines": {
     "node": ">=18"
   },
+  "keywords": [
+    "agentkit",
+    "ai",
+    "artificial intelligence",
+    "paybyrd",    
+    "mcp"
+  ],
   "author": "Paybyrd",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paybyrd/agent-toolkit-js/issues"
+  },
+  "homepage": "https://github.com/paybyrd/agent-toolkit-js#readme",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^20.8.3",
