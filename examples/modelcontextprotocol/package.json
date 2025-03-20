@@ -1,0 +1,17 @@
+{
+  "name": "paybyrd-agent-toolkit-mcp-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "ts-node index.ts",
+    "debug": "node --inspect-brk -r ts-node/register index.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@modelcontextprotocol/sdk": "^1.7.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
