@@ -16,7 +16,7 @@ class PaybyrdAgentToolkit extends McpServer {
   }) {
     super({
       name: 'Paybyrd',
-      version: '0.1.0'      
+      version: '0.1.1'      
     });
 
     this._paybyrd = new PaybyrdAPI(apiKey, configuration.context);

@@ -22,8 +22,9 @@ function initializeToolkit() {
   });
 }
 
-async function main() {
-  const server = initializeToolkit();
+const server = initializeToolkit();
+
+async function main() {  
   const transport = new StdioServerTransport();
   
   // Set up error handler for transport errors
