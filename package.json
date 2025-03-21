@@ -1,6 +1,6 @@
 {
   "name": "@paybyrd/ai-agent-toolkit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Toolkit for building AI agents with OpenAI and Claude",
   "type": "module", 
   "access": "public",
