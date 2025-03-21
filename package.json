@@ -9,16 +9,14 @@
   "homepage": "https://github.com/paybyrd/ai-agent-toolkit-js#readme",
   "bugs": "https://github.com/paybyrd/ai-agent-toolkit-js/issues",  
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('dist/claude/servers/index.js', '755')\"",
+    "build": "tsc",
     "clean": "rm -rf dist",
     "lint": "eslint \"./**/*.ts*\"",
     "prettier": "prettier './**/*.{js,ts,md,html,css}' --write",
     "prettier-check": "prettier './**/*.{js,ts,md,html,css}' --check",
     "test": "jest"    
   },
-  "bin": {
-    "claude-mcp-server": "./dist/claude/servers/index.js"
-  },
+  "bin": "dist/index.js",
   "keywords": [
     "agentkit",
     "ai",

@@ -1,12 +1,13 @@
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { PaybyrdAgentToolkit } from '../index.js';
+import { PaybyrdAgentToolkit } from './claude/index.js';
 import colors from 'colors';
 
 function initializeToolkit() {
  
   const apiKey = process.env.PAYBYRD_API_KEY;
   if (!apiKey || apiKey.trim() === "") {
-    const errorMsg = "A valid 'PAYBYRD_API_KEY' is required!";    
+    const errorMsg = "A valid 'PAYBYRD_API_KEY' is required!"; 
+    console.error(errorMsg);   
     throw new Error(errorMsg);
   }
 
