@@ -3,10 +3,18 @@ import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { Anthropic } from "@anthropic-ai/sdk";
 
 // Your Anthropic API key
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || "";
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
-if (!ANTHROPIC_API_KEY) {
-  console.error('Please set the ANTHROPIC_API_KEY environment variable');
+if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY.trim() === "") {
+  console.error('Please set a valid ANTHROPIC_API_KEY environment variable');
+  process.exit(1);
+}
+
+// Your Paybyrd API key
+const PAYBYRD_API_KEY = process.env.PAYBYRD_API_KEY || "";
+
+if (!PAYBYRD_API_KEY || PAYBYRD_API_KEY.trim() === "") {
+  console.error('Please set a valid PAYBYRD_API_KEY environment variable');
   process.exit(1);
 }
 
@@ -25,7 +33,10 @@ async function main() {
 
   const transport = new StdioClientTransport({
     command,
-    args: ["-y", "ts-node", "-cwd", "../../servers/modelcontextprotocol", "index.js"]
+    args: ["-y", "@paybyrd/ai-agent-toolkit", "start"],
+    env: {
+      PAYBYRD_API_KEY : PAYBYRD_API_KEY
+    }
   });
 
   mcp.connect(transport);

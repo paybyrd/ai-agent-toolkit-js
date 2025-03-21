@@ -7,8 +7,14 @@ const openai = new OpenAI({
 });
 
 // Initialize the Paybyrd toolkit
+const paybyrdApiKey = process.env.PAYBYRD_API_KEY;
+if (!paybyrdApiKey || paybyrdApiKey.trim() === "") {
+  console.error("A valid 'PAYBYRD_API_KEY' is required!");
+  process.exit(1);
+}
+
 const toolkit = new PaybyrdAgentToolkit({
-  apiKey: process.env.PAYBYRD_API_KEY || 'your-paybyrd-api-key',
+  apiKey: paybyrdApiKey,
   configuration: {
     actions: {
       paymentLinks: { create: true },

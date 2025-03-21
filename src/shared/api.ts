@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { createPaymentLink, createRefund, retrieveOrder } from './functions.js';
 import type { Context } from './configuration.js';
 

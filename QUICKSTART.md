@@ -7,7 +7,7 @@ This guide will help you get started with the Paybyrd Agent Toolkit, a library t
 Install the Paybyrd Agent Toolkit package:
 
 ```bash
-npm install @paybyrd/agent-toolkit
+npm install @paybyrd/ai-agent-toolkit
 ```
 
 ## Environment Setup
@@ -23,14 +23,14 @@ export PAYBYRD_API_KEY="your-paybyrd-api-key"
 ### Step 1: Install dependencies
 
 ```bash
-npm install openai @paybyrd/agent-toolkit
+npm install openai @paybyrd/ai-agent-toolkit
 ```
 
 ### Step 2: Create your OpenAI integration script
 
 ```typescript
 // openai-integration.ts
-import { PaybyrdAgentToolkit } from '@paybyrd/agent-toolkit/openai';
+import { PaybyrdAgentToolkit } from '@paybyrd/ai-agent-toolkit/openai';
 import OpenAI from 'openai';
 
 async function main() {
@@ -88,7 +88,7 @@ The Model Context Protocol allows Claude to access external tools. This integrat
 #### Step 1: Install the toolkit globally
 
 ```bash
-npm install -g @paybyrd/agent-toolkit
+npm install -g @paybyrd/ai-agent-toolkit
 ```
 
 #### Step 2: Set your Paybyrd API key
@@ -100,7 +100,7 @@ export PAYBYRD_API_KEY="your-paybyrd-api-key"
 #### Step 3: Run the Claude MCP server
 
 ```bash
-claude-mcp
+claude-mcp-server
 ```
 
 You should see "Connected!" if the server starts successfully.
@@ -110,7 +110,7 @@ You should see "Connected!" if the server starts successfully.
 1. Open the Claude Desktop App
 2. Navigate to Settings > Advanced > Model Context Protocol
 3. Check "Enable Model Context Protocol"
-4. Set the Command to: `claude-mcp`
+4. Set the Command to: `claude-mcp-server`
 5. Click "Save"
 
 ![Claude Desktop MCP Configuration](https://modelcontextprotocol.io/assets/images/claude-desktop-mcp-settings-70c4a46aca4ab6ef52a60fa9cb4ed6d9.png)
@@ -125,7 +125,7 @@ Now you can interact with Claude and ask it to perform Paybyrd-related tasks suc
 #### Step 1: Install dependencies
 
 ```bash
-npm install @anthropic-ai/sdk @modelcontextprotocol/sdk @paybyrd/agent-toolkit
+npm install @anthropic-ai/sdk @modelcontextprotocol/sdk @paybyrd/ai-agent-toolkit
 ```
 
 #### Step 2: Create the MCP server script
@@ -133,7 +133,7 @@ npm install @anthropic-ai/sdk @modelcontextprotocol/sdk @paybyrd/agent-toolkit
 ```typescript
 // mcp-server.ts
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { PaybyrdAgentToolkit } from '@paybyrd/agent-toolkit/modelcontextprotocol';
+import { PaybyrdAgentToolkit } from '@paybyrd/ai-agent-toolkit/modelcontextprotocol';
 
 function initializeToolkit() {
   if (!process.env.PAYBYRD_API_KEY) {
@@ -265,7 +265,7 @@ The Paybyrd Agent Toolkit currently supports:
    - Ensure you've set the PAYBYRD_API_KEY environment variable
 
 2. **Connection Issues with Claude Desktop**
-   - Verify the claude-mcp command is installed and in your PATH
+   - Verify the claude-mcp-server command is installed and in your PATH
    - Check that your API key is valid
    - Restart the Claude Desktop App
 

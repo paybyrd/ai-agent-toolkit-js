@@ -4,13 +4,14 @@ import colors from 'colors';
 
 function initializeToolkit() {
  
-  if (!process.env.PAYBYRD_API_KEY){
-    const errorMsg = "'PAYBYRD_API_KEY' API key is required!";    
+  const apiKey = process.env.PAYBYRD_API_KEY;
+  if (!apiKey || apiKey.trim() === "") {
+    const errorMsg = "A valid 'PAYBYRD_API_KEY' is required!";    
     throw new Error(errorMsg);
   }
 
   return new PaybyrdAgentToolkit({
-    apiKey: process.env.PAYBYRD_API_KEY,
+    apiKey,
     configuration: {
       actions: {
         paymentLinks: { create: true },

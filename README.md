@@ -15,7 +15,7 @@ Paybyrd Agent Toolkit is a library that enables AI models to interact with Payby
 ## Installation
 
 ```bash
-npm install @paybyrd/agent-toolkit
+npm install @paybyrd/ai-agent-toolkit
 ```
 
 ## Quick Start
@@ -29,7 +29,7 @@ npm install @paybyrd/agent-toolkit
 ### Using with OpenAI
 
 ```typescript
-import { PaybyrdAgentToolkit } from '@paybyrd/agent-toolkit/openai';
+import { PaybyrdAgentToolkit } from '@paybyrd/ai-agent-toolkit/openai';
 import OpenAI from 'openai';
 
 // Initialize the OpenAI client
@@ -77,7 +77,7 @@ Create a server script:
 ```typescript
 // server.ts
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { PaybyrdAgentToolkit } from '@paybyrd/agent-toolkit/modelcontextprotocol';
+import { PaybyrdAgentToolkit } from '@paybyrd/ai-agent-toolkit/modelcontextprotocol';
 
 function initializeToolkit() {
   if (!process.env.PAYBYRD_API_KEY) {
@@ -179,7 +179,7 @@ To use the toolkit with the Claude Desktop App:
 
 1. Install the toolkit:
    ```bash
-   npm install -g @paybyrd/agent-toolkit
+   npm install -g @paybyrd/ai-agent-toolkit
    ```
 
 2. Set your Paybyrd API key:
@@ -189,7 +189,7 @@ To use the toolkit with the Claude Desktop App:
 
 3. Run the MCP server:
    ```bash
-   claude-mcp
+   claude-mcp-server
    ```
 
 4. Configure Claude Desktop to use the MCP server:
@@ -200,7 +200,7 @@ To use the toolkit with the Claude Desktop App:
    
    c. Check "Enable Model Context Protocol"
    
-   d. Set the Command to: `claude-mcp`
+   d. Set the Command to: `claude-mcp-server`
    
    e. Click "Save"
 

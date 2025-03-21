@@ -1,33 +1,22 @@
 {
-  "name": "@paybyrd/agent-toolkit",
-  "version": "1.0.2",
+  "name": "@paybyrd/ai-agent-toolkit",
+  "version": "0.1.0",
   "type": "module",
+  "access": "public",
+  "author": "Paybyrd",
+  "license": "MIT",
+  "homepage": "https://github.com/paybyrd/ai-agent-toolkit-js#readme",
+  "bugs": "https://github.com/paybyrd/ai-agent-toolkit-js/issues",  
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('dist/claude/servers/index.js', '755')\"",
     "clean": "rm -rf dist",
     "lint": "eslint \"./**/*.ts*\"",
     "prettier": "prettier './**/*.{js,ts,md,html,css}' --write",
     "prettier-check": "prettier './**/*.{js,ts,md,html,css}' --check",
-    "test": "jest",
-    "claude-mcp": "ts-node ./src/claude/servers/index.ts"
+    "test": "jest"    
   },
   "bin": {
-    "claude-mcp": "./dist/claude/servers/index.js"
-  },
-  "exports": {
-    "./openai": {
-      "types": "./dist/openai/index.d.ts",
-      "require": "./dist/openai/index.js",
-      "import": "./dist/openai/index.js"
-    },
-    "./modelcontextprotocol": {
-      "types": "./dist/modelcontextprotocol/index.d.ts",
-      "require": "./dist/modelcontextprotocol/index.js",
-      "import": "./dist/modelcontextprotocol/index.js"
-    }
-  },
-  "engines": {
-    "node": ">=18"
+    "claude-mcp-server": "./dist/claude/servers/index.js"
   },
   "keywords": [
     "agentkit",
@@ -36,12 +25,6 @@
     "paybyrd",
     "mcp"
   ],
-  "author": "Paybyrd",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/paybyrd/agent-toolkit-js/issues"
-  },
-  "homepage": "https://github.com/paybyrd/agent-toolkit-js#readme",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^20.8.3",
@@ -71,5 +54,8 @@
     "LICENSE",
     "README.md",
     "package.json"
-  ]
+  ],
+  "engines": {
+    "node": ">=18"
+  }
 }
