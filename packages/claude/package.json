@@ -5,7 +5,7 @@
   "type": "module",
   "access": "public",
   "bin": {
-    "paybyrd-claude-agent": "./dist/index.js"
+    "paybyrd-claude-agent": "./dist/src/index.js"
   },
   "author": "Paybyrd",
   "license": "MIT",

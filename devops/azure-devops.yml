@@ -27,7 +27,7 @@ resources:
     - repository: templates
       type: git
       name: Gateway/paybyrd-deployment
-      ref: refs/tags/5.1.0
+      ref: release/7.12.0
 
 variables:
   - template: 'variables.yml'
@@ -42,7 +42,7 @@ stages:
       pool: ${{ parameters.pool }}
       artifact_name: ${{ variables.artifact_name }}
       
-  - template: npm/deploy.yml@templates
+  - template: npm/deploy-workspace.yml@templates
     parameters:
       pool: ${{ parameters.pool }}
       artifact_name: ${{ variables.artifact_name }}
