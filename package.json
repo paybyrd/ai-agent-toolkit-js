@@ -1,6 +1,6 @@
 {
   "name": "@paybyrd/ai-agent-toolkit-js",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Toolkit for building AI agents with OpenAI and Claude",
   "type": "module", 
   "private": false,
