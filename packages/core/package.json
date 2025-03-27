@@ -1,6 +1,6 @@
 {
   "name": "@paybyrd/ai-agent-toolkit",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Toolkit for building AI agents with various models",
   "type": "module",
   "access": "public",
