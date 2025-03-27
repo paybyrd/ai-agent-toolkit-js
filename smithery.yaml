@@ -1,0 +1,19 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - paybyrdApiKey
+    properties:
+      paybyrdApiKey:
+        type: string
+        description: Paybyrd API key to authenticate to their payment processing API
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({ command: 'node', args: ['dist/index.js'], env: { PAYBYRD_API_KEY: config.paybyrdApiKey } })
+  exampleConfig:
+    paybyrdApiKey: dummy-paybyrd-api-key
