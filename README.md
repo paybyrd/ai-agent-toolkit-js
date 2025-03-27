@@ -1,4 +1,5 @@
 # Paybyrd Agent Toolkit
+[![smithery badge](https://smithery.ai/badge/@paybyrd/ai-agent-toolkit-js)](https://smithery.ai/server/@paybyrd/ai-agent-toolkit-js)
 
 Paybyrd Agent Toolkit is a library that enables AI models to interact with Paybyrd's payment processing API through various interfaces, including OpenAI's function calling and the Model Context Protocol (MCP).
 
@@ -14,6 +15,15 @@ Paybyrd Agent Toolkit is a library that enables AI models to interact with Payby
 
 ## Installation
 
+### Installing via Smithery
+
+To install Paybyrd Agent Toolkit for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@paybyrd/ai-agent-toolkit-js):
+
+```bash
+npx -y @smithery/cli install @paybyrd/ai-agent-toolkit-js --client claude
+```
+
+### Manual Installation
 ```bash
 npm install @paybyrd/ai-agent-toolkit
 ```
