@@ -14,7 +14,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build",
     "clean": "rm -rf dist",
     "start": "node --loader ts-node/esm src/index.ts"
   },
@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
-    "@paybyrd/ai-agent-toolkit": "*"
+    "@paybyrd/ai-agent-toolkit": "^0.2.0"
   },
   "peerDependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0"
