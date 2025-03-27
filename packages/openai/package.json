@@ -1,6 +1,6 @@
 {
   "name": "@paybyrd/ai-agent-openai",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "OpenAI integration for AI agent toolkit",
   "type": "module",
   "access": "public",
@@ -22,7 +22,7 @@
     "openai"
   ],
   "dependencies": {
-    "@paybyrd/ai-agent-toolkit": "*",
+    "@paybyrd/ai-agent-toolkit": "file:../core",
     "zod-to-json-schema": "^3.22.4"
   },
   "peerDependencies": {

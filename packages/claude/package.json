@@ -1,6 +1,6 @@
 {
   "name": "@paybyrd/ai-agent-claude",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Paybyrd integration for a claude AI agent",
   "type": "module",
   "access": "public",
@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
-    "@paybyrd/ai-agent-toolkit": "*"
+    "@paybyrd/ai-agent-toolkit": "file:../core"
   },
   "peerDependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0"
