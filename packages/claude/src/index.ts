@@ -2,7 +2,6 @@
 
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import ClaudeAgentToolkit from './toolkit.js';
-import colors from 'colors';
 
 function initializeToolkit() {
  
@@ -28,15 +27,9 @@ function initializeToolkit() {
 const server = initializeToolkit();
 
 async function main() {  
-  const transport = new StdioServerTransport();
+  const transport = new StdioServerTransport();  
   
-  // Set up error handler for transport errors
-  transport.onerror = (error: Error) => {
-    console.error(colors.red('Transport error:'), error);
-  };
-  
-  await server.connect(transport);
-  console.log(colors.green("Connected!"));
+  await server.connect(transport);  
 }
 
 main().catch((error: unknown) => {

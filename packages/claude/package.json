@@ -1,6 +1,6 @@
 {
   "name": "@paybyrd/ai-agent-claude",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Paybyrd integration for a claude AI agent",
   "type": "module",
   "access": "public",
