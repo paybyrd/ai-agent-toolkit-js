@@ -22,7 +22,7 @@
     "openai"
   ],
   "dependencies": {
-    "@paybyrd/ai-agent-toolkit": "file:../core",
+    "@paybyrd/ai-agent-toolkit": "latest",
     "zod-to-json-schema": "^3.22.4"
   },
   "peerDependencies": {

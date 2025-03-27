@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
-    "@paybyrd/ai-agent-toolkit": "file:../core"
+    "@paybyrd/ai-agent-toolkit": "latest"
   },
   "peerDependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0"
