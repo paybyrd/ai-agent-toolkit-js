@@ -5,7 +5,7 @@ OpenAI integration for Paybyrd's AI Agent Toolkit.
 ## Installation
 
 ```bash
-npm install @paybyrd/ai-agent-openai openai
+npm install @paybyrd/ai-agent-openai
 ```
 
 ## Quick Start

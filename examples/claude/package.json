@@ -9,8 +9,8 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@modelcontextprotocol/sdk": "^1.7.0",
-    "@paybyrd/ai-agent-claude": "file:../../packages/claude",
-    "@paybyrd/ai-agent-toolkit": "file:../../packages/core",
+    "@paybyrd/ai-agent-claude": "latest",
+    "@paybyrd/ai-agent-toolkit": "latest",
     "colors": "^1.4.0"
   },
   "devDependencies": {

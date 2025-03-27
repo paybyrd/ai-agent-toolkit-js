@@ -6,8 +6,8 @@
     "start": "ts-node index.ts"
   },
   "dependencies": {
-    "@paybyrd/ai-agent-openai": "file:../../packages/openai",
-    "@paybyrd/ai-agent-toolkit": "file:../../packages/core",
+    "@paybyrd/ai-agent-openai": "latest",
+    "@paybyrd/ai-agent-toolkit": "latest",
     "openai": "^4.28.0"
   },
   "devDependencies": {

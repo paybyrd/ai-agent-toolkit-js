@@ -19,18 +19,14 @@ class ClaudeAgentToolkit extends McpServer {
   }) {
     super({
       name: 'Paybyrd',
-      version: '0.1.3'      
+      version: '0.1.0'      
     });
 
     this._paybyrd = new PaybyrdAPI(apiKey, configuration.context);
 
     const filteredTools = tools.filter((tool) =>
       isToolAllowed(tool, configuration)
-    );
-
-    // Log which tools are being registered
-    console.log('Registering the following tools:');
-    filteredTools.forEach(tool => console.log(`- ${tool.name} (${tool.method})`));
+    );    
 
     filteredTools.forEach((tool) => {
       this.tool(
@@ -38,7 +34,7 @@ class ClaudeAgentToolkit extends McpServer {
         tool.description,
         tool.parameters.shape,
         async (arg: any, _extra: RequestHandlerExtra) => {
-          console.log(`Executing tool: ${tool.method} with args:`, JSON.stringify(arg));
+          
           const result = await this._paybyrd.run(tool.method, arg);
           return {
             content: [
