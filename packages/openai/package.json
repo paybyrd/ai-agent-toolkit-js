@@ -1,6 +1,6 @@
 {
   "name": "@paybyrd/ai-agent-openai",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "OpenAI integration for AI agent toolkit",
   "type": "module",
   "access": "public",
@@ -8,8 +8,8 @@
   "license": "MIT",
   "homepage": "https://github.com/paybyrd/ai-agent-toolkit-js#readme",
   "bugs": "https://github.com/paybyrd/ai-agent-toolkit-js/issues",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"
