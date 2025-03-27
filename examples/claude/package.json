@@ -1,5 +1,5 @@
 {
-  "name": "paybyrd-agent-toolkit-mcp-example",
+  "name": "paybyrd-agent-toolkit-claude-example",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,10 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
-    "@modelcontextprotocol/sdk": "^1.7.0"
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@paybyrd/ai-agent-claude": "file:../../packages/claude",
+    "@paybyrd/ai-agent-toolkit": "file:../../packages/core",
+    "colors": "^1.4.0"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",

@@ -1,0 +1,45 @@
+{
+  "name": "@paybyrd/ai-agent-claude",
+  "version": "0.2.0",
+  "description": "Paybyrd integration for a claude AI agent",
+  "type": "module",
+  "access": "public",
+  "bin": {
+    "paybyrd-claude-agent": "./dist/index.js"
+  },
+  "author": "Paybyrd",
+  "license": "MIT",
+  "homepage": "https://github.com/paybyrd/ai-agent-toolkit-js#readme",
+  "bugs": "https://github.com/paybyrd/ai-agent-toolkit-js/issues",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "start": "node --loader ts-node/esm src/index.ts"
+  },
+  "keywords": [
+    "agentkit",
+    "ai",
+    "artificial intelligence",
+    "paybyrd",
+    "claude",
+    "anthropic"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@paybyrd/ai-agent-toolkit": "*"
+  },
+  "peerDependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0"
+  },
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

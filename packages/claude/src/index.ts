@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { PaybyrdAgentToolkit } from './claude/index.js';
+import ClaudeAgentToolkit from './toolkit.js';
 import colors from 'colors';
 
 function initializeToolkit() {
@@ -13,7 +13,7 @@ function initializeToolkit() {
     throw new Error(errorMsg);
   }
 
-  return new PaybyrdAgentToolkit({
+  return new ClaudeAgentToolkit({
     apiKey,
     configuration: {
       actions: {

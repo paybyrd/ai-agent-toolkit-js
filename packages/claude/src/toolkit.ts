@@ -1,10 +1,13 @@
 import {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
 import {RequestHandlerExtra} from '@modelcontextprotocol/sdk/shared/protocol.js';
-import {Configuration, isToolAllowed} from '../shared/configuration.js';
-import PaybyrdAPI from '../shared/api.js';
-import tools from '../shared/tools.js';
+import {
+  Configuration, 
+  isToolAllowed, 
+  PaybyrdAPI, 
+  tools
+} from '@paybyrd/ai-agent-toolkit';
 
-class PaybyrdAgentToolkit extends McpServer {
+class ClaudeAgentToolkit extends McpServer {
   private _paybyrd: PaybyrdAPI;
   
   constructor({
@@ -51,4 +54,4 @@ class PaybyrdAgentToolkit extends McpServer {
   }
 }
 
-export default PaybyrdAgentToolkit;
+export default ClaudeAgentToolkit;

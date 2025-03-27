@@ -1,12 +1,13 @@
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { Anthropic } from "@anthropic-ai/sdk";
+import colors from "colors";
 
 // Your Anthropic API key
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY.trim() === "") {
-  console.error('Please set a valid ANTHROPIC_API_KEY environment variable');
+  console.error(colors.red('Please set a valid ANTHROPIC_API_KEY environment variable'));
   process.exit(1);
 }
 
@@ -14,13 +15,13 @@ if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY.trim() === "") {
 const PAYBYRD_API_KEY = process.env.PAYBYRD_API_KEY || "";
 
 if (!PAYBYRD_API_KEY || PAYBYRD_API_KEY.trim() === "") {
-  console.error('Please set a valid PAYBYRD_API_KEY environment variable');
+  console.error(colors.red('Please set a valid PAYBYRD_API_KEY environment variable'));
   process.exit(1);
 }
 
 async function main() {
   
-  console.log("Initializing client...");
+  console.log(colors.cyan("Initializing client..."));
 
   // Initialize the Anthropic client
   const anthropic = new Anthropic({
@@ -33,7 +34,7 @@ async function main() {
 
   const transport = new StdioClientTransport({
     command,
-    args: ["-y", "@paybyrd/ai-agent-toolkit", "start"],
+    args: ["-y", "@paybyrd/ai-agent-claude"],
     env: {
       PAYBYRD_API_KEY : PAYBYRD_API_KEY
     }
@@ -52,11 +53,11 @@ async function main() {
   });
 
   console.log(
-    "Connected to server with tools:",
-    tools.map(({ name }) => name));
+    colors.green("Connected to server with tools:"),
+    tools.map(({ name }) => colors.yellow(name)));
     
   // Example: Create a paybylink of 50 EUR and send to an email
-  console.log("Waiting 5 seconds before sending message to Anthropic...");
+  console.log(colors.cyan("Waiting 5 seconds before sending message to Anthropic..."));
   await new Promise(resolve => setTimeout(resolve, 5000));
 
   // Example: Create a paybylink of 50 EUR and send to an email
@@ -73,10 +74,10 @@ async function main() {
     tools: tools
   });
   
-  console.log("Anthropic response:", message.content);
+  console.log(colors.green("Anthropic response:"), message.content);
 }
 
 main().catch(error => {
-  console.error('Client error:', error);
+  console.error(colors.red('Client error:'), error);
   process.exit(1);
 });

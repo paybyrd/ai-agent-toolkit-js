@@ -1,89 +1,70 @@
+import { OpenAIAgentToolkit } from '@paybyrd/ai-agent-openai';
 import OpenAI from 'openai';
-import { PaybyrdAgentToolkit } from '../../src/openai';
+import type { ChatCompletionMessageParam } from 'openai/resources';
 
 // Initialize OpenAI
+const openaiApiKey = process.env.OPENAI_API_KEY || 'your-openai-api-key';
+
+if (!openaiApiKey || openaiApiKey === "your-openai-api-key") {
+  console.error("A valid 'OPENAI_API_KEY' is required!");
+  process.exit(1);
+}
+
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || 'your-openai-api-key',
+  apiKey: openaiApiKey,
 });
 
 // Initialize the Paybyrd toolkit
-const paybyrdApiKey = process.env.PAYBYRD_API_KEY;
-if (!paybyrdApiKey || paybyrdApiKey.trim() === "") {
+const paybyrdApiKey = process.env.PAYBYRD_API_KEY || 'your-paybyrd-api-key';
+
+if (!paybyrdApiKey || paybyrdApiKey === "your-paybyrd-api-key") {
   console.error("A valid 'PAYBYRD_API_KEY' is required!");
   process.exit(1);
 }
 
-const toolkit = new PaybyrdAgentToolkit({
+const paybyrdAgentToolkit = new OpenAIAgentToolkit({
   apiKey: paybyrdApiKey,
   configuration: {
     actions: {
-      paymentLinks: { create: true },
-      refunds: { create: true },
-      order: { read: true }
+      paymentLinks: {
+        create: true,
+      },
+      refunds: {
+        create: true,
+      },
+      order: {
+        read: true,
+      },
     },
   },
 });
 
-async function main() {
-  try {
-    console.log('Creating chat completion with tools...');
-    
-    // Get the tools for OpenAI
-    const tools = toolkit.getTools();
-    
-    // Make a request to OpenAI with the tools
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o', // Or gpt-3.5-turbo or any model that supports tools
-      messages: [
-        { 
-          role: 'system', 
-          content: 'You are a helpful assistant that can create payment links and process refunds.' 
-        },
-        { 
-          role: 'user', 
-          content: 'Can you create a payment link for €50 for a customer named John Smith?' 
-        }
-      ],
-      tools: tools,
-    });
-    
-    const message = response.choices[0].message;
-    console.log('Message received:', message);
-    
-    if (message.tool_calls && message.tool_calls.length > 0) {
-      console.log('Tool calls detected, processing...');
-      
-      // Process the tool calls
-      const toolResults = await Promise.all(
-        message.tool_calls.map(toolCall => toolkit.handleToolCall(toolCall))
-      );
-      
-      console.log('Tool results:', toolResults);
-      
-      // Continue the conversation with the results
-      const finalResponse = await openai.chat.completions.create({
-        model: 'gpt-4o',
-        messages: [
-          { 
-            role: 'system', 
-            content: 'You are a helpful assistant that can create payment links and process refunds.' 
-          },
-          { 
-            role: 'user', 
-            content: 'Can you create a payment link for €50 for a customer named John Smith?' 
-          },
-          message,
-          ...toolResults,
-        ],
-      });
-      
-      console.log('Final response:', finalResponse.choices[0].message);
-    } else {
-      console.log('No tool calls made.');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
+(async (): Promise<void> => {
+  let messages: ChatCompletionMessageParam[] = [
+    {
+      role: 'user',
+      content: 'Create a payment link for €50 for a yellow t-shirt purchase.',
+    },
+  ];
 
-main();
+  while (true) {
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o',
+      messages,
+      tools: paybyrdAgentToolkit.getTools(),
+    });
+
+    const message = completion.choices[0].message;
+    messages.push(message);
+
+    if (message.tool_calls) {
+      const toolMessages = await Promise.all(
+        message.tool_calls.map((tc) => paybyrdAgentToolkit.handleToolCall(tc))
+      );
+      messages = [...messages, ...toolMessages];
+    } else {
+      console.log(message);
+      break;
+    }
+  }
+})();

@@ -1,14 +1,17 @@
-import PaybyrdAPI from '../shared/api.js';
-import tools from '../shared/tools.js';
-import {isToolAllowed, type Configuration} from '../shared/configuration.js';
-import {zodToJsonSchema} from 'zod-to-json-schema';
+import { 
+  PaybyrdAPI, 
+  tools, 
+  isToolAllowed, 
+  type Configuration 
+} from '@paybyrd/ai-agent-toolkit';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 import type {
   ChatCompletionTool,
   ChatCompletionMessageToolCall,
   ChatCompletionToolMessageParam,
 } from 'openai/resources';
 
-class PaybyrdAgentToolkit {
+class OpenAIAgentToolkit {
   private _paybyrd: PaybyrdAPI;
   tools: ChatCompletionTool[];
 
@@ -58,4 +61,4 @@ class PaybyrdAgentToolkit {
   }
 }
 
-export default PaybyrdAgentToolkit;
+export default OpenAIAgentToolkit;
