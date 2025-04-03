@@ -20,9 +20,16 @@ You can use npx to start the agent server:
 npx -y @paybyrd/ai-agent-claude
 ```
 
-### Required Environment Variables
+### Authentication
 
-- `PAYBYRD_API_KEY`: Your Paybyrd API key
+You can authenticate using either:
+
+- **Environment Variable**: `PAYBYRD_API_KEY`: Your Paybyrd API key
+- **Command Argument**: `--apiKey=YOUR_API_KEY`
+
+```bash
+npx -y @paybyrd/ai-agent-claude --apiKey=YOUR_API_KEY
+```
 
 ### Full Example
 
@@ -53,6 +60,10 @@ async function main() {
       PAYBYRD_API_KEY: PAYBYRD_API_KEY
     }
   });
+
+  // Alternatively, you can pass the API key as an argument:
+  // args: ["-y", "@paybyrd/ai-agent-claude", "--apiKey=" + PAYBYRD_API_KEY],
+  // env: {}
 
   mcp.connect(transport);
 
