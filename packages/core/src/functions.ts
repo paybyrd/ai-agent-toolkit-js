@@ -6,21 +6,31 @@ import {
   retrieveOrderParameters,
 } from './parameters.js';
 
+interface AuthInfo {
+  authToken: string;
+  isApiKey: boolean;
+}
+
 export const createPaymentLink = async (
-  apiKey: string,
+  auth: AuthInfo,
   baseUrl: string,
   params: z.infer<typeof createPaymentLinkParameters>
 ) => {
   try {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json'      
+    };
+    
+    if (auth.isApiKey) {
+      headers['x-api-key'] = auth.authToken;
+    } else {
+      headers['Authorization'] = `Bearer ${auth.authToken}`;
+    }
+    
     const response = await axios.post(
       `${baseUrl}/orders`,
       params,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-        },
-      }
+      { headers }
     );
     
     if (response.data.checkoutUrl) {
@@ -40,23 +50,28 @@ export const createPaymentLink = async (
 };
 
 export const createRefund = async (
-  apiKey: string,
+  auth: AuthInfo,
   baseUrl: string,
   params: z.infer<typeof createRefundParameters>
 ) => {
   try {
     const { transactionId, ...requestBody } = params;
     
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      'accept': 'application/json',
+    };
+    
+    if (auth.isApiKey) {
+      headers['x-api-key'] = auth.authToken;
+    } else {
+      headers['Authorization'] = `Bearer ${auth.authToken}`;
+    }
+    
     const response = await axios.post(
       `${baseUrl}/refund/${transactionId}`,
       requestBody,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'accept': 'application/json',
-          'x-api-key': apiKey,
-        },
-      }
+      { headers }
     );
 
     if (response.data.code === 'BYRD200') {
@@ -81,21 +96,26 @@ export const createRefund = async (
 };
 
 export const retrieveOrder = async (
-  apiKey: string,
+  auth: AuthInfo,
   baseUrl: string,
   params: z.infer<typeof retrieveOrderParameters>
 ) => {
   try {
     const { orderId } = params;
     
+    const headers: Record<string, string> = {
+      'accept': 'application/json',
+    };
+    
+    if (auth.isApiKey) {
+      headers['x-api-key'] = auth.authToken;
+    } else {
+      headers['Authorization'] = `Bearer ${auth.authToken}`;
+    }
+    
     const response = await axios.get(
       `${baseUrl}/orders/${orderId}`,
-      {
-        headers: {
-          'accept': 'application/json',
-          'x-api-key': apiKey,
-        },
-      }
+      { headers }
     );
     
     if (response.status === 200) {

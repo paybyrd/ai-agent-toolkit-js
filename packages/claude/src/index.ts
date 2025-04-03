@@ -4,16 +4,20 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import ClaudeAgentToolkit from './toolkit.js';
 
 function initializeToolkit() {
- 
-  const apiKey = process.env.PAYBYRD_API_KEY;
-  if (!apiKey || apiKey.trim() === "") {
-    const errorMsg = "A valid 'PAYBYRD_API_KEY' is required!"; 
+  // Get auth token from command line argument first, then environment variables
+  const cmdAuthToken = process.argv[2];
+  const envApiKey = process.env.PAYBYRD_API_KEY;
+  const envBearerToken = process.env.PAYBYRD_BEARER_TOKEN;
+  const authToken = cmdAuthToken || envBearerToken || envApiKey;
+
+  if (!authToken || authToken.trim() === "") {
+    const errorMsg = "Authentication is required! Provide API key or Bearer token as command line argument, or set PAYBYRD_API_KEY or PAYBYRD_BEARER_TOKEN environment variable."; 
     console.error(errorMsg);   
     throw new Error(errorMsg);
   }
 
   return new ClaudeAgentToolkit({
-    apiKey,
+    authToken,
     configuration: {
       actions: {
         paymentLinks: { create: true },

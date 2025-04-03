@@ -11,18 +11,18 @@ class ClaudeAgentToolkit extends McpServer {
   private _paybyrd: PaybyrdAPI;
   
   constructor({
-    apiKey,
+    authToken,
     configuration,
   }: {
-    apiKey: string;
+    authToken: string;
     configuration: Configuration;
   }) {
     super({
-      name: 'Paybyrd',
+      name: 'paybyrd',
       version: '0.1.0'      
     });
 
-    this._paybyrd = new PaybyrdAPI(apiKey, configuration.context);
+    this._paybyrd = new PaybyrdAPI(authToken, configuration.context);
 
     const filteredTools = tools.filter((tool) =>
       isToolAllowed(tool, configuration)

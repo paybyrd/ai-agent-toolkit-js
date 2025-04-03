@@ -12,6 +12,7 @@ export type Actions = {
   };
 };
 
+
 // Context are settings that are applied to all requests made by the integration.
 export type Context = {
   // Optional custom configuration
