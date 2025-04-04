@@ -15,15 +15,16 @@ const openai = new OpenAI({
 });
 
 // Initialize the Paybyrd toolkit
-const paybyrdApiKey = process.env.PAYBYRD_API_KEY || 'your-paybyrd-api-key';
+// Authentication can be done with either API Key or Bearer Token
+const paybyrdAuthToken = process.env.PAYBYRD_BEARER_TOKEN || process.env.PAYBYRD_API_KEY || 'your-paybyrd-auth-token';
 
-if (!paybyrdApiKey || paybyrdApiKey === "your-paybyrd-api-key") {
-  console.error("A valid 'PAYBYRD_API_KEY' is required!");
+if (!paybyrdAuthToken || paybyrdAuthToken === "your-paybyrd-auth-token") {
+  console.error("A valid 'PAYBYRD_BEARER_TOKEN' or 'PAYBYRD_API_KEY' is required!");
   process.exit(1);
 }
 
 const paybyrdAgentToolkit = new OpenAIAgentToolkit({
-  apiKey: paybyrdApiKey,
+  authToken: paybyrdAuthToken,
   configuration: {
     actions: {
       paymentLinks: {

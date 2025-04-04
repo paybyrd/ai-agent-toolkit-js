@@ -16,13 +16,13 @@ class OpenAIAgentToolkit {
   tools: ChatCompletionTool[];
 
   constructor({
-    apiKey,
+    authToken,
     configuration,
   }: {
-    apiKey: string;
+    authToken: string;
     configuration: Configuration;
   }) {
-    this._paybyrd = new PaybyrdAPI(apiKey, configuration.context);
+    this._paybyrd = new PaybyrdAPI(authToken, configuration.context);
 
     const filteredTools = tools.filter((tool) =>
       isToolAllowed(tool, configuration)
