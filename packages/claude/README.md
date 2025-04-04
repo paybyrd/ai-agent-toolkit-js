@@ -22,13 +22,18 @@ npx -y @paybyrd/ai-agent-claude
 
 ### Authentication
 
-You can authenticate using either:
+You can authenticate using any of these methods:
 
-- **Environment Variable**: `PAYBYRD_API_KEY`: Your Paybyrd API key
-- **Command Argument**: `--apiKey=YOUR_API_KEY`
+- **Environment Variable**: `PAYBYRD_API_KEY`: Your Paybyrd API key (in GUID format)
+- **Environment Variable**: `PAYBYRD_BEARER_TOKEN`: Your Paybyrd Bearer token
+- **Command Argument**: `--apiKey=YOUR_API_KEY` or `--apiKey=YOUR_BEARER_TOKEN`
 
 ```bash
+# With API Key
 npx -y @paybyrd/ai-agent-claude --apiKey=YOUR_API_KEY
+
+# With Bearer Token
+npx -y @paybyrd/ai-agent-claude --apiKey=YOUR_BEARER_TOKEN
 ```
 
 ### Full Example
@@ -41,8 +46,8 @@ import { Anthropic } from "@anthropic-ai/sdk";
 // Your Anthropic API key
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
-// Your Paybyrd API key
-const PAYBYRD_API_KEY = process.env.PAYBYRD_API_KEY;
+// Your Paybyrd authentication token (API Key or Bearer Token)
+const PAYBYRD_AUTH_TOKEN = process.env.PAYBYRD_BEARER_TOKEN || process.env.PAYBYRD_API_KEY;
 
 async function main() {
   // Initialize the Anthropic client
@@ -57,12 +62,12 @@ async function main() {
     command: "npx",
     args: ["-y", "@paybyrd/ai-agent-claude"],
     env: {
-      PAYBYRD_API_KEY: PAYBYRD_API_KEY
+      PAYBYRD_API_KEY: PAYBYRD_AUTH_TOKEN
     }
   });
 
-  // Alternatively, you can pass the API key as an argument:
-  // args: ["-y", "@paybyrd/ai-agent-claude", "--apiKey=" + PAYBYRD_API_KEY],
+  // Alternatively, you can pass the auth token as an argument:
+  // args: ["-y", "@paybyrd/ai-agent-claude", "--apiKey=" + PAYBYRD_AUTH_TOKEN],
   // env: {}
 
   mcp.connect(transport);

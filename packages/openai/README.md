@@ -24,8 +24,9 @@ const openai = new OpenAI({
 });
 
 // Initialize the Paybyrd toolkit
+// Authentication can be done with API Key or Bearer Token
 const toolkit = new OpenAIAgentToolkit({
-  apiKey: process.env.PAYBYRD_API_KEY,
+  authToken: process.env.PAYBYRD_BEARER_TOKEN || process.env.PAYBYRD_API_KEY,
   configuration: {
     actions: {
       paymentLinks: { create: true },
