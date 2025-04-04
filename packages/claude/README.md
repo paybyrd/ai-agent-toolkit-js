@@ -26,14 +26,14 @@ You can authenticate using any of these methods:
 
 - **Environment Variable**: `PAYBYRD_API_KEY`: Your Paybyrd API key (in GUID format)
 - **Environment Variable**: `PAYBYRD_BEARER_TOKEN`: Your Paybyrd Bearer token
-- **Command Argument**: `--apiKey=YOUR_API_KEY` or `--apiKey=YOUR_BEARER_TOKEN`
+- **Command Argument**: Pass your API key or Bearer token directly as an argument
 
 ```bash
 # With API Key
-npx -y @paybyrd/ai-agent-claude --apiKey=YOUR_API_KEY
+npx -y @paybyrd/ai-agent-claude YOUR_API_KEY
 
 # With Bearer Token
-npx -y @paybyrd/ai-agent-claude --apiKey=YOUR_BEARER_TOKEN
+npx -y @paybyrd/ai-agent-claude YOUR_BEARER_TOKEN
 ```
 
 ### Full Example
@@ -66,8 +66,8 @@ async function main() {
     }
   });
 
-  // Alternatively, you can pass the auth token as an argument:
-  // args: ["-y", "@paybyrd/ai-agent-claude", "--apiKey=" + PAYBYRD_AUTH_TOKEN],
+  // Alternatively, you can pass the auth token directly as an argument:
+  // args: ["-y", "@paybyrd/ai-agent-claude", PAYBYRD_AUTH_TOKEN],
   // env: {}
 
   mcp.connect(transport);
