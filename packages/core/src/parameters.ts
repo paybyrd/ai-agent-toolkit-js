@@ -3,6 +3,10 @@ import {v4 as uuidv4} from 'uuid';
 
 // Payment Link Parameters (for Order creation API)
 export const createPaymentLinkParameters = z.object({
+  personId :z
+    .number()
+    .int()    
+    .describe('The person/store identification for which the payment link will be created.'),
   isoAmount: z
     .number()
     .int()
@@ -65,9 +69,9 @@ export const createPaymentLinkParameters = z.object({
   paymentOptions: z
     .object({
       allowedPaymentMethods: z
-        .array(z.enum(['CARD', 'MBWAY']))
+        .array(z.enum(['CARD', 'MBWAY', 'SIBS_MULTIBANCO', 'IDEAL', 'PAYPAL', 'MULTICAIXA_REF', 'SEPA', 'FLOA1XD', 'FLOA3X', 'FLOA4X', 'REVOLUTPAY', 'KLARNA', 'PIX', 'PICKUP', 'MULTICAIXAEXPRESS']))
         .optional()
-        .describe('List of payment methods that should be enabled.'),
+        .describe('List of payment methods that should be enabled. If not provided, all the payment methods configured in the merchant\'s account will be available.'),
     })
     .optional()
     .describe('Payment-specific options.'),
