@@ -76,6 +76,7 @@ export const createRefund = async (
 
     if (response.data.code === 'BYRD200') {
       return {
+        refundTransactionId: response.data.transactionId,
         success: true,
         code: response.data.code,
         description: response.data.description
@@ -119,7 +120,46 @@ export const retrieveOrder = async (
     );
     
     if (response.status === 200) {
-      return response.data;
+      return response.data as {
+        orderDate: string;
+        expiresAt: string;
+        status: string;
+        checkoutUrl: string;
+        transactions: any[];
+        orderId: string;
+        amount: string;
+        currency: string;
+        orderRef: string;
+        shopper: {
+          firstName: string | null;
+          lastName: string | null;
+          email: string | null;
+          phoneCountryCode: number | null;
+          phoneNumber: string | null;
+        } | null;
+        orderOptions: {
+          redirectUrl: string | null;
+          culture: string;
+          expiresIn: string | null;
+          notifyBy: {
+            email: { address: string } | null;
+            whatsApp: {
+              firstName: string | null;
+              lastName: string | null;
+              phoneCountryCode: number;
+              phoneNumber: string;
+            } | null;
+            sms: {
+              firstName: string | null;
+              lastName: string | null;
+              phoneCountryCode: number;
+              phoneNumber: string;
+            } | null;
+          } | null;
+        };
+        code: string;
+        description: string;
+      };
     } else {
       return 'Failed to retrieve order details';
     }

@@ -11,6 +11,8 @@ Optional arguments:
 - shopper (object): The shopper information with firstName and lastName.
 - orderOptions (object): Configuration options including notification preferences, redirect URL, culture code, and expiration time.
 - paymentOptions (object): Payment method configuration including allowedPaymentMethods.
+
+The 'orderId' and the 'checkoutUrl' fields in the response are the most important values for the user.
 `;
 
 export const createRefundPrompt = `
