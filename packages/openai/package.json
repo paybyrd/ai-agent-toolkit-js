@@ -1,6 +1,6 @@
 {
   "name": "@paybyrd/ai-agent-openai",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "OpenAI integration for AI agent toolkit",
   "type": "module",
   "access": "public",
