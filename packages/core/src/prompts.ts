@@ -2,7 +2,6 @@ export const createPaymentLinkPrompt = `
 This tool will create a payment link through the Paybyrd API that can be sent to customers.
 
 Required arguments:
-- personId (number): Also known as the store ID, this parameter is required when using Bearer Token authentication instead of an API key.
 - isoAmount (number): The payment amount in the smallest currency unit (e.g. cents for EUR).
 - currency (string): The currency code of the payment (e.g. EUR).
 

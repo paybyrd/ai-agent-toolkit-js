@@ -1,29 +1,20 @@
 import { createPaymentLink, createRefund, retrieveOrder } from './functions.js';
 import type { Context } from './configuration.js';
 
-// Helper function to check if a string is in GUID format
-const isGuid = (value: string): boolean => {
-  const guidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-  return guidRegex.test(value);
-};
-
 class PaybyrdAPI {
-  private authToken: string;
-  private isApiKey: boolean;
+  private apiKey: string;
   private baseUrl: string;
   context: Context;
 
-  constructor(authToken: string, context?: Context) {
-    this.authToken = authToken;
-    this.isApiKey = isGuid(authToken);
+  constructor(apiKey: string, context?: Context) {
+    this.apiKey = apiKey;
     this.baseUrl = context?.baseUrl || 'https://gateway.paybyrd.com/api/v2';
     this.context = context || {};
   }
 
   async run(method: string, arg: any) {
     const authInfo = {
-      authToken: this.authToken,
-      isApiKey: this.isApiKey
+      apiKey: this.apiKey
     };
     
     if (method === 'create_payment_link') {

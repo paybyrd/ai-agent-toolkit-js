@@ -3,10 +3,6 @@ import {v4 as uuidv4} from 'uuid';
 
 // Payment Link Parameters (for Order creation API)
 export const createPaymentLinkParameters = z.object({
-  personId :z
-    .number()
-    .int()    
-    .describe('The person/store identification for which the payment link will be created.'),
   isoAmount: z
     .number()
     .int()

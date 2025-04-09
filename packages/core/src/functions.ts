@@ -7,8 +7,7 @@ import {
 } from './parameters.js';
 
 interface AuthInfo {
-  authToken: string;
-  isApiKey: boolean;
+  apiKey: string;
 }
 
 export const createPaymentLink = async (
@@ -18,14 +17,9 @@ export const createPaymentLink = async (
 ) => {
   try {
     const headers: Record<string, string> = {
-      'Content-Type': 'application/json'      
+      'Content-Type': 'application/json',
+      'x-api-key': auth.apiKey      
     };
-    
-    if (auth.isApiKey) {
-      headers['x-api-key'] = auth.authToken;
-    } else {
-      headers['Authorization'] = `Bearer ${auth.authToken}`;
-    }
     
     const response = await axios.post(
       `${baseUrl}/orders`,
@@ -60,13 +54,8 @@ export const createRefund = async (
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
       'accept': 'application/json',
+      'x-api-key': auth.apiKey
     };
-    
-    if (auth.isApiKey) {
-      headers['x-api-key'] = auth.authToken;
-    } else {
-      headers['Authorization'] = `Bearer ${auth.authToken}`;
-    }
     
     const response = await axios.post(
       `${baseUrl}/refund/${transactionId}`,
@@ -106,13 +95,8 @@ export const retrieveOrder = async (
     
     const headers: Record<string, string> = {
       'accept': 'application/json',
+      'x-api-key': auth.apiKey
     };
-    
-    if (auth.isApiKey) {
-      headers['x-api-key'] = auth.authToken;
-    } else {
-      headers['Authorization'] = `Bearer ${auth.authToken}`;
-    }
     
     const response = await axios.get(
       `${baseUrl}/orders/${orderId}`,
